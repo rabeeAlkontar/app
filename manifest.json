@@ -6,6 +6,13 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "Moslah",
-  "start_url": "/https://rabeealkontar.github.io/app/",
-  "theme_color": "#ffffff"
+  "start_url": "https://rabeealkontar.github.io/app/",
+  "theme_color": "#ffffff",
+  "icons":[
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type":"image/png"
+    }
+  ]
 }
