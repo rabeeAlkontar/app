@@ -1,0 +1,11 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Moslah",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Moslah",
+  "start_url": "/https://rabeealkontar.github.io/app/",
+  "theme_color": "#ffffff"
+}
