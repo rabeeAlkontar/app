@@ -1,18 +1,18 @@
 {
-  "background_color": "#ffffff",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "Moslah",
+  "name": "مصلح للتجارة",
+  "short_name": "مصلح",
+  "start_url": "./",
+  "display": "fullscreen",
+  "background_color": "#f4f6f9",
+  "theme_color": "#007bff",
   "orientation": "any",
-  "scope": "/",
-  "short_name": "Moslah",
-  "start_url": "https://rabeealkontar.github.io/app/",
-  "theme_color": "#ffffff",
-  "icons":[
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
     {
       "src": "icon.png",
       "sizes": "512x512",
-      "type":"image/png"
+      "type": "image/png"
     }
   ]
 }

@@ -5,17 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>مصلح للتجارة</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-    <div class="conatiner">
+    <div class="container">
       <h2>مصلح للتجارة</h2>
+
+      <!-- Save Grid & Import Section -->
+      <div class="save-section">
+        <input
+          type="text"
+          id="gridNameInput"
+          placeholder="اسم القائمة (مثال: الأحد - المحل الرئيسي)"
+        />
+        <button class="save-btn" onclick="saveCurrentGrid()">
+          حفظ القائمة
+        </button>
+      </div>
+
+      <!-- Import JSON Backup Button -->
+      <div class="import-section">
+        <label for="importFile" class="import-file-label"
+          >📂 استيراد نسخة احتياطية (JSON)</label
+        >
+        <input
+          type="file"
+          id="importFile"
+          accept=".json"
+          onchange="importJSONBackup(event)"
+          style="display: none"
+        />
+      </div>
+
+      <!-- Saved Grids Sidebar/List -->
+      <div class="saved-grids-container">
+        <h4>القوائم المحفوظة:</h4>
+        <div id="savedGridsList" class="saved-grids-list">
+          <span class="no-saved-text">لا توجد قوائم محفوظة بعد</span>
+        </div>
+      </div>
 
       <div class="form-group">
         <label for="exchangeRate"
           >قيمة الدولار الحالية (بالليرة السورية) :</label
         >
-        <input type="number" id="exchangeRate" placeholder="مثال : 1500" />
+        <input
+          type="text"
+          inputmode="decimal"
+          id="exchangeRate"
+          placeholder="مثال : 1,500"
+          oninput="formatNumber(this)"
+        />
       </div>
 
       <table>
@@ -23,8 +62,8 @@
           <tr>
             <th>اسم المادة</th>
             <th>الكمية</th>
-            <th>سعر الوحدة</th>
-            <th id="usdHeader" style="display: none">المجموع (دولار)</th>
+            <th>الإفرادي محلي</th>
+            <th>الإفرادي دولار</th>
             <th>حذف</th>
           </tr>
         </thead>
@@ -34,47 +73,65 @@
             <td>
               <input type="text" class="item-input" placeholder="اسم المادة" />
             </td>
-            <td><input type="number" class="item-input qty" value="1" /></td>
             <td>
               <input
-                type="number"
-                class="item-input Price"
-                placeholder="0.00"
+                type="text"
+                inputmode="decimal"
+                class="item-input qty"
+                value="1"
+                oninput="formatNumber(this)"
               />
             </td>
-            <td class="row-usd" style="display: none">$0.00</td>
+            <td>
+              <input
+                type="text"
+                inputmode="decimal"
+                class="item-input local-Price"
+                placeholder="محلي"
+                oninput="handleDualPriceInput(this, 'local')"
+                onfocus="checkIfLocked(this, 'local')"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                inputmode="decimal"
+                class="item-input usd-Price"
+                placeholder="دولار"
+                oninput="handleDualPriceInput(this, 'usd')"
+                onfocus="checkIfLocked(this, 'usd')"
+              />
+            </td>
             <td><button class="danger" onclick="removeRow(this)">X</button></td>
           </tr>
         </tbody>
       </table>
 
-      <div style="display: flex; gap: 10px; margin-top: 10px">
-        <button class="secondary" onclick="addRow()" style="flex: 1">
-          اضافة مادة +
-        </button>
-        <button class="danger" onclick="clearAll()" style="flex: 1">
-          مسح الكل
-        </button>
+      <div class="action-buttons-group">
+        <button class="secondary" onclick="addRow()">اضافة مادة +</button>
+        <button class="danger-btn" onclick="clearAll()">مسح الكل</button>
       </div>
 
       <div class="btn-container">
-        <button onclick="processOption1()">عرض في الجدول</button>
-        <button onclick="processOption2()">عرض كايصال</button>
+        <button class="success-btn" onclick="calculateResults()">
+          عرض النتائج
+        </button>
       </div>
 
-      <div id="receiptBox" class="result-box">
-        <h3 style="margin-top: 0; text-align: center">ملخص الفاتورة</h3>
-        <div id="receiptList"></div>
-        <div class="grand-total" id="receiptGrandTotal">المجموع : $0.00</div>
-      </div>
-
-      <div id="gridTotalBox" class="result-box" style="text-align: right">
-        <span class="grand-total" id="gridGrandTotal"
-          >المجموع بالدولار : $0.00</span
-        >
+      <div id="resultContainer" class="result-container-box">
+        <p class="placeholder-text">
+          اضغط على "عرض النتائج" لإظهار الحسابات هنا
+        </p>
       </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .catch((err) => console.log("SW Registration failed:", err));
+      }
+    </script>
   </body>
 </html>
