@@ -347,9 +347,8 @@ function calculateResults() {
 
     resultHTML += `
       <div class="result-row-card">
-        <div class="result-item-name">📦 ${name}</div>
+        <div class="result-item-name">📦 ${name}  --  <span>الكمية (${qty.toLocaleString('en-US')})</span> </div>
         <div class="result-details">
-          <span>الكمية: ${qty.toLocaleString('en-US')}</span>
           <span>الإفرادي محلي: ${formatCommas(unitLocal)}</span>
           <span>الإفرادي دولار: $${formatCommas(unitUsd)}</span>
         </div>
