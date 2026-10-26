@@ -1,6 +1,7 @@
 {
   "name": "مصلح للتجارة",
   "short_name": "مصلح",
+  "scop":"/",
   "start_url": "./",
   "display": "fullscreen",
   "background_color": "#f4f6f9",
