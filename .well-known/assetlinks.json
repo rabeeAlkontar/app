@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "io.github.rabeealkontar.twa",
-        "sha256_cert_fingerprints": ["96:24:25:2E:AF:0B:0E:DB:BD:0B:4A:7F:7A:F4:09:CB:12:2E:16:40:E2:6B:98:AA:1E:13:E3:B9:0C:EF:D3:B4"]
-        }
-}]
+        "sha256_cert_fingerprints": ["D4:8C:7E:97:1F:F5:32:D6:22:0B:2A:15:5A:ED:DF:1B:D6:00:32:20:98:20:40:30:5C:DD:AF:15:73:67:B1:CE"]
+      }
+    }]
