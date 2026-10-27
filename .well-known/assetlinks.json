@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.rabeealkontar.twa",
+        "sha256_cert_fingerprints": ["96:24:25:2E:AF:0B:0E:DB:BD:0B:4A:7F:7A:F4:09:CB:12:2E:16:40:E2:6B:98:AA:1E:13:E3:B9:0C:EF:D3:B4"]
+        }
+}]
